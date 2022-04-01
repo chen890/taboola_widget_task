@@ -81,5 +81,20 @@
     .recommendations {
       flex-direction: column;
     }
+
+    .img::after {
+      width: 70%;
+      content: "\a";
+      white-space: pre;
+    }
+
+    .brand::before {
+      color: gray;
+      font-family: 'Gotham XNarrow', Arial, Helvetica, Tahoma, sans-serif;
+      font-size: x-small;
+      font-weight: bold;
+      content: "\a";
+      white-space: pre;
+    }
   }
   

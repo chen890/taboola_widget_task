@@ -1,24 +1,8 @@
-// var URL_params = {
-//     "publisherID":"apitestaccount",
-//     "app.type":"web",
-//     "app.apikey":"7be65fc78e52c11727793f68b06d782cff9ede3c",
-//     "rec.count":"6",
-//     "rec.type":"mix",
-//     "user.session":"init",
-//     "source.type":"home",
-//     "source.id":"/Fdigiday-publishing-summit/",
-//     "source.url":"https://blog.taboola.com/Fdigiday-publishing-summit/",
-//     "source.placement":"Editorial%20Trending",
-//     "placements.organicType":"mix"
-//   };
-
-//   const url="http://api.taboola.com/1.0/json/"+URL_params["publisherID"]+"/recommendations.get?app.type="+URL_params["app.type"]+"&app.apikey="+URL_params["app.apikey"]+"&rec.count="+URL_params["rec.count"]+"&rec.type="+URL_params["rec.type"]+"&user.session="+URL_params["user.session"]+"&source.type="+URL_params["source.type"]+"&source.id="+URL_params["source.id"]+"&source.url="+URL_params["source.url"]+"&source.placement="+URL_params["source.placement"]+"&placements.organicType="+URL_params["placements.organicType"];
-
-  const RECOMMENDATIONS_API = 'https://api.taboola.com/1.2/json/apitestaccount/recommendations.get?app.type=web&app.apikey=7be65fc78e52c11727793f68b06d782cff9ede3c&source.id=%2Fdigiday-publishing-summit%2F&source.url=https%3A%2F%2Fblog.taboola.com%2Fdigiday-publishing-summit%2F&source.type=text&placement.organic-type=mix&placement.visible=true&placement.available=true&placement.rec-count=6&placement.name=Below%20Article%20Thumbnails&placement.thumbnail.width=640&placement.thumbnail.height=480&user.session=init'
+  const API_REQ = 'https://api.taboola.com/1.2/json/apitestaccount/recommendations.get?app.type=web&app.apikey=7be65fc78e52c11727793f68b06d782cff9ede3c&source.id=%2Fdigiday-publishing-summit%2F&source.url=https%3A%2F%2Fblog.taboola.com%2Fdigiday-publishing-summit%2F&source.type=text&placement.organic-type=mix&placement.visible=true&placement.available=true&placement.rec-count=6&placement.name=Below%20Article%20Thumbnails&placement.thumbnail.width=640&placement.thumbnail.height=480&user.session=init'
 
 async function getRecommendations() {
   try {
-    let response = await fetch(RECOMMENDATIONS_API);
+    let response = await fetch(API_REQ);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -70,6 +54,19 @@ function RecommendationElements() {
   document.getElementById('main').appendChild(secondRowRecommendations);
 }
 
+// Creates the Brand tag under the title
+function brandElement(element) {
+  var spanBrandding = document.createElement('span');
+  spanBrandding.className = 'brand';
+  var branding_text = element.categories ?
+    element.branding + ' | ' + 
+    element.categories[0].charAt(0).toUpperCase() + 
+    element.categories[0].slice(1) : element.branding;
+  var branding = document.createTextNode(branding_text);
+  spanBrandding.appendChild(branding);
+  return spanBrandding;
+}
+
 // Retrieves the image from API response
 function retrievesImageElement(element) {
   var img = document.createElement('img');
@@ -89,37 +86,21 @@ function retrievesNameElement(element) {
   return spanName;
 }
 
-// Creates the Brand tag under the title
-function brandElement(element) {
-  var spanBrandding = document.createElement('span');
-  spanBrandding.className = 'brand';
-  var branding_text = element.categories ?
-    element.branding + ' | ' + 
-    element.categories[0].charAt(0).toUpperCase() + 
-    element.categories[0].slice(1) : element.branding;
-  var branding = document.createTextNode(branding_text);
-  spanBrandding.appendChild(branding);
-  return spanBrandding;
-}
-
 //  The cards elements
 function cardElement(element) {
   var cardDiv = document.createElement('a');
   cardDiv.className = 'card';
   cardDiv.href = element.url;
 
-  // Add image, name, and brandding + category to card
+  // Gether the image, name, and brandding to a card
   img = retrievesImageElement(element);
   cardDiv.appendChild(img);
   spanName = retrievesNameElement(element);
   cardDiv.appendChild(spanName);
   spanBrandding = brandElement(element);
   cardDiv.appendChild(spanBrandding);
-
   return cardDiv;
 }
-
-
 
 // Merging all together
 function mergeAllRecommendations()
