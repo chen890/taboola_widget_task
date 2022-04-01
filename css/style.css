@@ -69,9 +69,6 @@
     margin:auto;
 }
 .footerContent {
-    font-family: 'Gotham XNarrow', Arial, Helvetica, Tahoma, sans-serif;
-    font-weight: bold;
-    font-size: large;
     float:left;
     width:100%;
     background-color:rgb(255, 255, 255);

@@ -111,12 +111,15 @@ function cardElement(element) {
   // Add image, name, and brandding + category to card
   img = retrievesImageElement(element);
   cardDiv.appendChild(img);
-  spanBrandding = brandElement(element);
-  cardDiv.appendChild(spanBrandding);
   spanName = retrievesNameElement(element);
   cardDiv.appendChild(spanName);
+  spanBrandding = brandElement(element);
+  cardDiv.appendChild(spanBrandding);
+
   return cardDiv;
 }
+
+
 
 // Merging all together
 function mergeAllRecommendations()
