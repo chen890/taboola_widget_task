@@ -1,4 +1,4 @@
-  const API_REQ = 'https://api.taboola.com/1.2/json/apitestaccount/recommendations.get?app.type=web&app.apikey=7be65fc78e52c11727793f68b06d782cff9ede3c&source.id=%2Fdigiday-publishing-summit%2F&source.url=https%3A%2F%2Fblog.taboola.com%2Fdigiday-publishing-summit%2F&source.type=text&placement.organic-type=mix&placement.visible=true&placement.available=true&placement.rec-count=6&placement.name=Below%20Article%20Thumbnails&placement.thumbnail.width=640&placement.thumbnail.height=480&user.session=init'
+const API_REQ = 'https://api.taboola.com/1.2/json/apitestaccount/recommendations.get?app.type=web&app.apikey=7be65fc78e52c11727793f68b06d782cff9ede3c&source.id=%2Fdigiday-publishing-summit%2F&source.url=https%3A%2F%2Fblog.taboola.com%2Fdigiday-publishing-summit%2F&source.type=text&placement.organic-type=mix&placement.visible=true&placement.available=true&placement.rec-count=6&placement.name=Below%20Article%20Thumbnails&placement.thumbnail.width=640&placement.thumbnail.height=480&user.session=init'
 
 async function getRecommendations() {
   try {
@@ -10,17 +10,8 @@ async function getRecommendations() {
   }
 }
 
-// Creates the 'You May Like' header
-function createHeaderElement() {
-  var header = document.createElement('span');
-  header.className = 'header';
-  var headerText = document.createTextNode("You May Like");
-  header.appendChild(headerText);
-  return header;
-}
-
 // Creates Disclosure 
-function createDisclosureElement() {
+function disclosureElement() {
   var disclosure = document.createElement('span');
   disclosure.className = 'disclosure'
   var disclosureText = document.createTextNode("Sponsored Links by Taboola");
@@ -28,11 +19,20 @@ function createDisclosureElement() {
   return disclosure;
 }
 
+// Creates the 'You May Like' header
+function headerElement() {
+  var header = document.createElement('span');
+  header.className = 'header';
+  var headerText = document.createTextNode("You May Like");
+  header.appendChild(headerText);
+  return header;
+}
+
 // Generates the 'You May Like' and Sponsered by Taboola on the top
 function createTop() {
   var top = document.createElement('div');
-  header = createHeaderElement();
-  disclosure = createDisclosureElement();
+  header = headerElement();
+  disclosure = disclosureElement();
   top.className = 'top';
   top.appendChild(header);
   top.appendChild(disclosure);
