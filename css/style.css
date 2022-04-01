@@ -1,0 +1,88 @@
+#main {
+    padding: 10px;
+    background-color: #ffffff;
+  }
+  
+  .recommendations {
+    display: flex;
+  }
+  
+  .top {
+    padding: 8px;
+    font-family: 'Gotham XNarrow', Arial, Helvetica, Tahoma, sans-serif;
+    font-weight: bold;
+    overflow: hidden;
+  }
+  
+  .header {
+    font-size: large;
+  }
+  
+  .disclosure {
+    float: right;
+    font-size: x-small;
+    line-height: 2;
+  }
+  
+  .card {
+    padding: 8px;
+    flex: 1;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .img {
+    width: 70%;
+  }
+  
+  .name {
+    font-family: 'Gotham XNarrow', Arial, Helvetica, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: black;
+  }
+  
+  .name:hover {
+    text-decoration: underline;
+    color: blue;
+  }
+  
+  .brand {
+    color: gray;
+    font-family: 'Gotham XNarrow', Arial, Helvetica, Tahoma, sans-serif;
+    font-size: x-small;
+    font-weight: bold;
+  }
+
+  .footerWrap {
+    width:100%;
+    position:fixed;
+    bottom: 0px;
+}
+.footer {
+    width:400px;
+    margin:auto;
+}
+.footerContent {
+    font-family: 'Gotham XNarrow', Arial, Helvetica, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    float:left;
+    width:100%;
+    background-color:rgb(255, 255, 255);
+    padding:20px 0;
+    font-weight: bold
+}
+.footer p {float:left; width:100%; text-align:center; }
+  
+  @media screen and (max-width: 500px) {
+    .recommendations {
+      flex-direction: column;
+    }
+  }
+  
